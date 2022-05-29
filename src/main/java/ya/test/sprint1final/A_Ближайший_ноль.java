@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
 /**
+ * https://contest.yandex.ru/contest/22450/run-report/68684863/
  * https://contest.yandex.ru/contest/22450/run-report/68657509/
  * <p>
  * Улица, на которой хочет жить Тимофей, имеет длину n, то есть состоит из n одинаковых идущих подряд участков. На
@@ -40,7 +41,35 @@ public class A_Ближайший_ноль {
 
     final static int REMEMBERED_HOUSE_POSITION_IS_ABSENT = -1;
 
+
     public static void nearestZero(int[] homeNumbers) {
+        int distance = homeNumbers.length;
+
+        for (int i = 0; i < homeNumbers.length; i++) {
+            int currentCheckNumber = homeNumbers[i];
+
+            if (hasHouse(currentCheckNumber)) {
+                homeNumbers[i] = distance++;
+            } else {
+                distance = 1;
+            }
+        }
+
+        distance = homeNumbers.length;
+
+        for (int i = homeNumbers.length - 1; i >= 0; i--) {
+            int currentCheckNumber = homeNumbers[i];
+
+            if (hasHouse(currentCheckNumber)) {
+                homeNumbers[i] = Math.min(distance, currentCheckNumber);
+                distance++;
+            } else {
+                distance = 1;
+            }
+        }
+    }
+
+    public static void nearestZeroVeryComplex(int[] homeNumbers) {
         int rememberedHousePosition = REMEMBERED_HOUSE_POSITION_IS_ABSENT;
 
         for (int i = 0; i < homeNumbers.length; i++) {
@@ -94,7 +123,7 @@ public class A_Ближайший_ноль {
     /**
      * Решение от наставника
      */
-    private int[] closerZero(int[] houses) {
+    private static int[] closerZero(int[] houses) {
         int[] distances = new int[houses.length];
         int distance = houses.length;
         // слева направо
