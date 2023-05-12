@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * https://contest.yandex.ru/contest/26365/problems/D/
+ */
 public class TwoFishka {
 
     public static void main(String[] args) throws IOException {

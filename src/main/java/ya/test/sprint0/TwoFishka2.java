@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * https://contest.yandex.ru/contest/26365/problems/E/
+ */
 public class TwoFishka2 {
 
     public static void main(String[] args) throws IOException {
